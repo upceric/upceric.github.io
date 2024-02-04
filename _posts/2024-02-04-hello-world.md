@@ -20,3 +20,40 @@ public:
 };
 {% endhighlight %}
 
+3025. Find the Number of Ways to Place People I
+{% highlight ruby %}
+class Solution {
+public:
+    bool ok(vector<vector<int>>&a,int i,int j) {
+        if(a[i][0]==a[j][0]) {
+            for(int k=0;k<a.size();k++) {
+                if(k==i||k==j) continue;
+                if(a[k][0]==a[i][0] && a[k][1]>=min(a[i][1],a[j][1]) && a[k][1]<=max(a[i][1],a[j][1])) return false;
+            }
+        }
+        if(a[i][1]==a[j][1]) {
+            for(int k=0;k<a.size();k++) {
+                if(k==i||k==j) continue;
+                if(a[k][1]==a[i][1] && a[k][0]>=min(a[i][0],a[j][0]) && a[k][0]<=max(a[i][0],a[j][0])) return false;
+            }            
+        }
+        for(int k=0;k<a.size();k++) {
+            if(k==i||k==j) continue;
+            if(a[k][0]>=a[i][0] && a[k][0]<=a[j][0] && a[k][1]>=a[j][1] && a[k][1]<=a[i][1]) return false;
+        }
+        return true;
+    }
+    int numberOfPairs(vector<vector<int>>& a) {
+        int res=0;
+        int n=a.size();
+        sort(begin(a),end(a));
+        for(int i=0;i<n;i++) {
+            for(int j=i+1;j<n;j++) {
+                if(a[i][0]!=a[j][0] && a[j][1]>a[i][1])continue;
+                    res+=ok(a,i,j);
+            }
+        }
+        return res;
+    }
+};
+{% endhighlight %}
