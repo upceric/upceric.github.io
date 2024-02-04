@@ -20,7 +20,7 @@ public:
 };
 {% endhighlight %}
 
-3025. Find the Number of Ways to Place People I
+"3025. Find the Number of Ways to Place People I"
 {% highlight ruby %}
 class Solution {
 public:
@@ -58,7 +58,7 @@ public:
 };
 {% endhighlight %}
 
-3026. Maximum Good Subarray Sum
+"3026. Maximum Good Subarray Sum"
 
 {% highlight ruby %}
 class Solution {
@@ -93,7 +93,7 @@ public:
 };
 {% endhighlight %}
 
-3027. Find the Number of Ways to Place People II
+"3027. Find the Number of Ways to Place People II"
 
 {% highlight ruby %}
 class Solution {
