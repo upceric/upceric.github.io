@@ -57,3 +57,65 @@ public:
     }
 };
 {% endhighlight %}
+
+3026. Maximum Good Subarray Sum
+
+{% highlight ruby %}
+class Solution {
+public:
+    using ll=long long;
+    long long maximumSubarraySum(vector<int>& b, int k) {
+        int n=b.size();
+        vector<ll> a(n,0);
+        vector<ll> pre(n+1,0);
+        for(int i=0;i<n;i++) {
+            a[i]=b[i];
+            pre[i+1]=pre[i]+a[i];
+        }
+        ll res=LLONG_MIN/2;
+        unordered_map<ll,ll> mp;
+        for(int i=0;i<n;i++) {
+            if(mp.count(a[i]+k)) {
+                res=max(res,pre[i+1]-mp[a[i]+k]);
+            } 
+            if(mp.count(a[i]-k)) {
+                res=max(res,pre[i+1]-mp[a[i]-k]);
+            }
+            if(mp.count(a[i]))
+                mp[a[i]]=min(mp[a[i]],pre[i]);
+            else 
+                mp[a[i]]=pre[i];
+        }
+        if(res==LLONG_MIN/2) return 0;
+        return res;
+        
+    }
+};
+{% endhighlight %}
+
+3027. Find the Number of Ways to Place People II
+
+{% highlight ruby %}
+class Solution {
+public:
+    using ll=long long;
+    int numberOfPairs(vector<vector<int>>& p) {
+        int res=0;
+        sort(begin(p),end(p),[](auto x,auto y){
+            return x[0]<y[0] || (x[0]==y[0] && x[1]>y[1]);
+        });
+        for(int i=0;i<p.size();i++) {
+            int ym=INT_MIN;
+            for(int j=i+1;j<p.size();j++) {
+                if(p[j][1]>p[i][1]) continue;
+                if(p[j][1]>ym) {
+                    res++;
+                    ym=p[j][1];
+                }
+            }
+        }
+        return res;
+        
+    }
+};
+{% endhighlight %}
