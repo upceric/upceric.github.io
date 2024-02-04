@@ -60,6 +60,10 @@ public:
 
 "3026. Maximum Good Subarray Sum"
 
+prefix sum
+using a map to record the minimum value for each a[i]. Whenever we find a value, which is
+a[i]-k or a[i]+k, prefix sum will help us find the maximum value.
+
 {% highlight ruby %}
 class Solution {
 public:
