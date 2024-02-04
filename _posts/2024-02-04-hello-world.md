@@ -4,7 +4,7 @@ title:  "leetcode biweekly contest 123"
 date:   2024-02-04 13:17:11 +0100
 categories: jekyll update
 ---
-3024. Type of Triangle II
+"3024. Type of Triangle II"
 
 {% highlight ruby %}
 class Solution {
